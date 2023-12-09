@@ -27,10 +27,10 @@ const AuthController = {
 
     registerUser: async (req, res) => {
         try {
-            const { username, password, email, user_type } = req.body;
+            const { username, password, email, role } = req.body;
 
             // Basic validation
-            if (!username || !password || !email || !user_type) {
+            if (!username || !password || !email || !role) {
                 return res.status(400).json({ error: 'Invalid input. All fields are required.' });
             }
 
@@ -40,8 +40,8 @@ const AuthController = {
             // Generate a JWT token for the new user
             const token = generateToken(username, email); // You can customize the token payload as needed
 
-            // Create a new user with the hashed password and user_type
-            const newUser = await User.create({ username, password: hashedPassword, email, user_type, token });
+            // Create a new user with the hashed password and role
+            const newUser = await User.create({ username, password: hashedPassword, email, role, token });
 
             res.status(201).json({ user: newUser });
         } catch (error) {
