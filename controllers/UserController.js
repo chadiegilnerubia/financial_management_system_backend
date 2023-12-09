@@ -310,7 +310,7 @@ const UserController = {
             const budgetId = req.params.budgetId;
 
             // Check if the budget exists
-            const existingBudget = await User.findByPk(budgetId);
+            const existingBudget = await BudgetProposal.findByPk(budgetId);
             if (!existingBudget) {
                 return res.status(404).json({ error: 'Budget not found' });
             }

@@ -80,6 +80,30 @@ const BudgetProposalController = {
             res.status(500).json({ error: 'Internal server error' });
         }
     },
+    approveBudget: async (req, res) => {
+        try {
+            const budgetId = req.params.id;
+            console.log("budgetID", budgetId)
+            // Check if the budget exists
+            const existingBudget = await BudgetProposal.findByPk(budgetId);
+            if (!existingBudget) {
+                return res.status(404).json({ error: 'Budget not found' });
+            }
+
+            // Update the budget status to true (approved)
+            const updateFields = {
+                budget_proposal_status: true,
+            };
+
+            const updatedBudget = await existingBudget.update(updateFields);
+
+            res.json(updatedBudget);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
+    },
+
 };
 
 module.exports = BudgetProposalController;
