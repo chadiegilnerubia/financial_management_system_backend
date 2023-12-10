@@ -32,6 +32,10 @@ const IncomeStatement = sequelize.define('income_statements', {
         type: DataTypes.TEXT,
         allowNull: true,
     },
+    company_name: {
+        type: DataTypes.TEXT,
+        allowNull: true,
+    },
     submitter: {
         type: DataTypes.STRING(125),
         allowNull: true,
