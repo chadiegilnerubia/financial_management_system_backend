@@ -2,6 +2,15 @@
 const BudgetProposal = require('../models/BudgetProposal');
 
 const BudgetProposalController = {
+    getAllBudgetProposals: async (req, res) => {
+        try {
+            const budgetProposals = await BudgetProposal.findAll();
+            res.json(budgetProposals);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal server error' });
+        }
+    },
     createBudgetProposal: async (req, res) => {
         try {
             const { userId } = req.params; // Extract user ID from URL parameters

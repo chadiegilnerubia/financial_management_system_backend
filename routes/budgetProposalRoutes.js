@@ -20,4 +20,7 @@ router.put('/user/:userId/budget-proposal/:id', budgetProposalController.updateB
 // Delete a budget proposal by ID for a specific user
 router.delete('/user/:userId/budget-proposal/:id', budgetProposalController.deleteBudgetProposal);
 
+router.get('/budget-proposals', budgetProposalController.getAllBudgetProposals);
+
+
 module.exports = router;

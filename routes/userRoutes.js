@@ -18,4 +18,8 @@ router.delete('/:userId/budget/:budgetId', UserController.deleteBudget);
 router.put('/:userId/budget/:budgetId/notapprove', UserController.notApproveBudget);
 router.put('/:userId/budget/:budgetId/approve', UserController.approveBudget);
 
+// Route for resetting the password
+router.post('/reset-password', UserController.resetPassword);
+
+
 module.exports = router;
