@@ -24,6 +24,8 @@ const BudgetProposalController = {
                 budget_proposal_status: false, // Assuming the default status is false
             });
             console.log('id', userId)
+            req.io.emit('newBudgetProposal', newBudgetProposal);
+            console.log('WebSocket event emitted successfully:', newBudgetProposal);
             res.status(201).json(newBudgetProposal);
         } catch (error) {
             console.error(error);
